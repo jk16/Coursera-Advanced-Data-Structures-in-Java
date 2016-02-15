@@ -120,9 +120,26 @@ public abstract class Graph {
 	 * 
 	 * @return The degree sequence of this graph.
 	 */
+    public int getDegree(int v) {  
+        return getNeighbors(v).size() + getInNeighbors(v).size()  ;
+    }
+    
 	public List<Integer> degreeSequence() {
-		// XXX: Implement in part 1 of week 1
-		return null;
+        //listDegrees
+        List<Integer> listDeg = new ArrayList<Integer>();
+        int d;
+        
+//      for each vertex 
+        for(int i=0; i<numVertices; i++) {
+//          get the degree of the vertex
+            d = getDegree(i);
+//          add degree to listDegrees
+            listDeg.add(d);
+        }
+//      sort:largest to smallest, allow repeats
+        Collections.sort(listDeg);//ascending order
+        Collections.reverse(listDeg);
+        return listDeg;
 	}
 	
 	/**
