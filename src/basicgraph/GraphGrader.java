@@ -51,7 +51,7 @@ public class GraphGrader {
      */
     public void runTest(int i, String desc, int start, List<Integer> corr) {
         GraphAdjList lst = new GraphAdjList();
-        GraphAdjMatrix mat = new GraphAdjMatrix();
+//        GraphAdjMatrix mat = new GraphAdjMatrix();
         
         feedback += "\n\nGRAPH: " + desc;
         feedback += appendFeedback(i * 2 - 1, "Testing adjacency list"); 
@@ -61,10 +61,10 @@ public class GraphGrader {
         List<Integer> result = lst.getDistance2(start);
         judge(result, corr);
  
-        feedback += appendFeedback(i * 2, "Testing adjacency matrix");
-        GraphLoader.loadGraph("data/graders/mod1/graph" + i + ".txt", mat);
-        result = mat.getDistance2(start);
-        judge(result, corr);
+//        feedback += appendFeedback(i * 2, "Testing adjacency matrix");
+//        GraphLoader.loadGraph("data/graders/mod1/graph" + i + ".txt", mat);
+//        result = mat.getDistance2(start);
+//        judge(result, corr);
     }
 
     /** Run a road map/airplane route test case.
@@ -77,7 +77,7 @@ public class GraphGrader {
      */
     public void runSpecialTest(int i, String file, String desc, int start, List<Integer> corr, String type) {
         GraphAdjList lst = new GraphAdjList();
-        GraphAdjMatrix mat = new GraphAdjMatrix();
+//        GraphAdjMatrix mat = new GraphAdjMatrix();
 
         String prefix = "data/graders/mod1/";
 
@@ -87,18 +87,18 @@ public class GraphGrader {
         // Different method calls for different graph types
         if (type.equals("road")) {
             GraphLoader.loadRoadMap(prefix + file, lst);
-            GraphLoader.loadRoadMap(prefix + file, mat);
+//            GraphLoader.loadRoadMap(prefix + file, mat);
         } else if (type.equals("air")) {
             GraphLoader.loadRoutes(prefix + file, lst);
-            GraphLoader.loadRoutes(prefix + file, mat);
+//            GraphLoader.loadRoutes(prefix + file, mat);
         }
 
         List<Integer> result = lst.getDistance2(start);
         judge(result, corr);
 
-        feedback += appendFeedback(i * 2, "Testing adjacency matrix");
-        result = mat.getDistance2(start);
-        judge(result, corr);
+//        feedback += appendFeedback(i * 2, "Testing adjacency matrix");
+//        result = mat.getDistance2(start);
+//        judge(result, corr);
     }
 
     /** Compare the user's result with the right answer.
